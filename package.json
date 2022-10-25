@@ -1,7 +1,10 @@
 {
-  "name": "poc_release_management",
+  "name": "@fabriciomendonca/poc_release_management",
   "version": "0.1.0",
-  "private": true,
+  "author": "Fabricio Mendonca",
+  "repository": {
+    "url": "https://github.com/fabriciomendonca/poc-release-management"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
