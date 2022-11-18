@@ -4,7 +4,7 @@ on:
   pull_request:
     branches:
       - "main"
-    tyoes: [closed]
+    types: [closed]
 
 jobs:
   create-beta-release:
