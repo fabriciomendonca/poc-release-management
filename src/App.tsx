@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Trying breaking change
+          The breaking change didn't work, why?
         </p>
         <a
           className="App-link"
