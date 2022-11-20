@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          No breaking change goes to next branch
+          Trying breaking change
         </p>
         <a
           className="App-link"
