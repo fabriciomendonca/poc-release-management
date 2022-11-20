@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          The breaking change didn't work, why? I've changed this text and the semantic-release didn't detect it...
+          Trying with Conventional Commits
         </p>
         <a
           className="App-link"
