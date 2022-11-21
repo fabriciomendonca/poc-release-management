@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Another code for testing a fix branch
+          Breaking change on top of breaking change
         </p>
         <a
           className="App-link"
