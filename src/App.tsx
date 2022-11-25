@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          I'm just updating the text.
+          Adding a breaking change.
         </p>
         <a
           className="App-link"
