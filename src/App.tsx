@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Breaking change on top of breaking change
+          It shouldn't run the PR name verification if I push new commits
         </p>
         <a
           className="App-link"
