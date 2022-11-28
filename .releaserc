@@ -7,12 +7,21 @@
     }
   ],
   "plugins": [
-    ["@semantic-release/commit-analyzer", {
-      "preset": "conventionalcommits",
-      "presetConfig": {
-        "name": "conventionalchangelog"
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "conventionalcommits",
+        "presetConfig": {
+          "name": "conventionalchangelog"
+        },
+        "releaseRules": [
+          {
+            "type": "*!",
+            "release": "major"
+          }
+        ]
       }
-    }],
+    ],
     "@semantic-release/release-notes-generator",
     "@semantic-release/npm",
     "@semantic-release/github"
