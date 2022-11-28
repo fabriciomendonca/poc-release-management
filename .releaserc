@@ -16,8 +16,9 @@
         },
         "releaseRules": [
           {
-            "type": "*!",
-            "release": "major"
+            "type": "feat!",
+            "release": "major",
+            "section": "Breaking Changes"
           }
         ]
       }
