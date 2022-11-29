@@ -63,7 +63,7 @@
         "name": "conventionalchangelog",
         "types": [
           {
-            "type": "feat!",
+            "type": "*!",
             "release": "major",
             "section": "Breaking Changes"
           },
