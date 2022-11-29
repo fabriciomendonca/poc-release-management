@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Package json must be updated!
+          Package json should be updated!
         </p>
         <a
           className="App-link"
