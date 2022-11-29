@@ -43,15 +43,18 @@
           },
           {
             "type": "chore",
-            "hidden": false
+            "hidden": false,
+            "section": "Other updates"
           },
           {
             "type": "docs",
-            "hidden": true
+            "hidden": false,
+            "section": "Other updates"
           },
           {
             "type": "style",
-            "hidden": true
+            "hidden": false,
+            "section": "Other updates"
           },
           {
             "type": "refactor",
@@ -60,11 +63,13 @@
           },
           {
             "type": "perf",
-            "hidden": true
+            "hidden": false,
+            "section": "Other updates"
           },
           {
             "type": "test",
-            "hidden": true
+            "hidden": false,
+            "section": "Other updates"
           }
         ]
       }
