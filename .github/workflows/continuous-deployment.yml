@@ -66,5 +66,8 @@ jobs:
                     commit-message: 'chore: update package.json [ci skip]'
                     branch: chore/auto_update_package_json_version
                     delete-branch: true
+                    add-paths: |
+                        package.json
+                        package-lock.json
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
