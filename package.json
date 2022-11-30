@@ -45,7 +45,6 @@
     ]
   },
   "devDependencies": {
-    "@semantic-release/git": "^10.0.1",
     "conventional-changelog-conventionalcommits": "^5.0.0",
     "cypress": "^10.10.0",
     "cypress-real-events": "^1.7.2",
