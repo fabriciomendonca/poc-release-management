@@ -60,6 +60,6 @@ jobs:
                     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
                     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             -   name: Testing git
-                run: git add package.json package-lock.json && git commit -m "chore: update package.json [ci skip]" && git push origin/beta
+                run: git add package.json package-lock.json && git commit -m \"chore: update package.json [ci skip]\" && git push origin/beta
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
