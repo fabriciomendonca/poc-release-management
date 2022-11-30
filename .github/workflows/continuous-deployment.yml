@@ -60,6 +60,11 @@ jobs:
                     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
                     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             -   name: Testing git
-                run: git add package.json package-lock.json && git commit -m 'update package.json [ci skip]' && git push origin/beta
+                uses: peter-evans/create-pull-request@v4
+                with:
+                    title: 'chore: update package.json [ci skip]'
+                    commit-message: 'chore: update package.json [ci skip]'
+                    branch: chore/auto_update_package_json_version
+                    delete-branch: true
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
