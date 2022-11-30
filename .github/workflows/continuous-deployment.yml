@@ -62,6 +62,7 @@ jobs:
             -   name: Testing git
                 uses: peter-evans/create-pull-request@v4
                 with:
+                    token: ${{ secrets.GITHUB_TOKEN }}
                     title: 'chore: update package.json [ci skip]'
                     commit-message: 'chore: update package.json [ci skip]'
                     branch: chore/auto_update_package_json_version
