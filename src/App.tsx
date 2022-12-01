@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          With package.json update?
+          With package.json update in the open PR
         </p>
         <a
           className="App-link"
