@@ -1,4 +1,5 @@
 {
+  "debug": true,
   "branches": [
     "main",
     {
@@ -7,13 +8,76 @@
     }
   ],
   "plugins": [
-    ["@semantic-release/commit-analyzer", {
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "conventionalcommits",
+        "presetConfig": {
+          "name": "conventionalchangelog"
+        },
+        "releaseRules": [
+          {
+            "type": "chore",
+            "release": "patch"
+          },
+          {
+            "type": "chore(release)",
+            "release": false
+          }
+        ]
+      }
+    ],
+    ["@semantic-release/release-notes-generator", {
       "preset": "conventionalcommits",
       "presetConfig": {
-        "name": "conventionalchangelog"
+        "name": "conventionalchangelog",
+        "types": [
+          {
+            "type": "*!",
+            "release": "major",
+            "section": "Breaking Changes"
+          },
+          {
+            "type": "feat",
+            "section": "Features"
+          },
+          {
+            "type": "fix",
+            "section": "Bug Fixes"
+          },
+          {
+            "type": "chore",
+            "hidden": false,
+            "section": "Other updates"
+          },
+          {
+            "type": "docs",
+            "hidden": false,
+            "section": "Other updates"
+          },
+          {
+            "type": "style",
+            "hidden": false,
+            "section": "Other updates"
+          },
+          {
+            "type": "refactor",
+            "hidden": false,
+            "section": "Refactoring"
+          },
+          {
+            "type": "perf",
+            "hidden": false,
+            "section": "Other updates"
+          },
+          {
+            "type": "test",
+            "hidden": false,
+            "section": "Other updates"
+          }
+        ]
       }
     }],
-    "@semantic-release/release-notes-generator",
     "@semantic-release/npm",
     "@semantic-release/github"
   ]
