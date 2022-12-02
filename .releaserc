@@ -74,6 +74,10 @@
             "type": "test",
             "hidden": false,
             "section": "Other updates"
+          },
+          {
+            "type": "automation",
+            "hidden": true
           }
         ]
       }
