@@ -55,19 +55,17 @@ jobs:
                 run: npm run build
 
             -   name: Release
-                if: |
-                    ${{ contains(github.event.commits[0].message, format('automation{0} update package.json', ':')) }}
+                if: ${{ !contains(github.event.commits[0].message, format('automation{0} update package.json', ':')) }}
                 run: |
                     echo ${{github.event.commits[0].message}}
-                    echo ${{ contains(github.event.commits[0].message, format('automation{0} update package.json', ':')) }}
+                    echo ${{ !contains(github.event.commits[0].message, format('automation{0} update package.json', ':')) }}
                     npx semantic-release
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
                     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             -   name: Create Pull Request
-                if: |
-                    ${{ contains(github.event.commits[0].message, format('automation{0} update package.json', ':')) }}
+                if: ${{ !contains(github.event.commits[0].message, format('automation{0} update package.json', ':')) }}
                 id: cpr
                 uses: peter-evans/create-pull-request@v4
                 with:
