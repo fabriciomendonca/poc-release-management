@@ -56,7 +56,10 @@ jobs:
 
             -   name: Release
                 if: ${{ !contains(github.event.commits[0].message, format('chore(release-skip){0}', ':')) }}
-                run: npx semantic-release
+                run: |
+                    echo ${{ !contains(github.event.commits[0].message, format('chore(release-skip){0}', ':')) }}
+                    echo github.event.commits[0].message
+                    npx semantic-release
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
