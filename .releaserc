@@ -21,7 +21,7 @@
             "release": "patch"
           },
           {
-            "type": "automation",
+            "type": "chore(release-skip)",
             "release": false
           }
         ]
@@ -76,7 +76,7 @@
             "section": "Other updates"
           },
           {
-            "type": "automation",
+            "type": "chore(release-skip)",
             "hidden": true
           }
         ]
