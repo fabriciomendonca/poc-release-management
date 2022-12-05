@@ -1,6 +1,6 @@
 {
   "name": "@fabriciomendonca/poc_release_management",
-  "version": "5.6.0-beta.2",
+  "version": "5.6.0",
   "author": "Fabricio Mendonca",
   "repository": {
     "url": "https://github.com/fabriciomendonca/poc-release-management"
