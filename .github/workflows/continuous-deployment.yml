@@ -55,17 +55,16 @@ jobs:
                 run: npm run build
 
             -   name: Release
-                if: ${{ !contains(github.event.commits[0].message, format('chore(release-skip){0}', ':')) }}
+                if: ${{ !contains(github.event.commits[-1].message, format('chore(release-skip){0}', ':')) }}
                 run: |
-                    commits="${{ join(github.event.commits.*.message, '\n') }}"
-                    echo $commits
+                    echo github.event.commits[-1].message
                     npx semantic-release
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
                     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             -   name: Create Pull Request
-                if: ${{ !contains(github.event.commits[0].message, format('chore(release-skip){0}', ':')) }}
+                if: ${{ !contains(github.event.commits[-1].message, format('chore(release-skip){0}', ':')) }}
                 id: cpr
                 uses: peter-evans/create-pull-request@v4
                 with:
