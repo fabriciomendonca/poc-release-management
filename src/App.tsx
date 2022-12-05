@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          With package.json update in the open PR
+          Adding a new commit before merging beta into main.
         </p>
         <a
           className="App-link"
