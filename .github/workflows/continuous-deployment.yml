@@ -57,7 +57,7 @@ jobs:
             -   name: Release
                 if: ${{ !contains(github.event.commits[0].message, format('chore(release-skip){0}', ':')) }}
                 run: |
-                    commits=${{join(github.event.commits.*.message, '\n') }}
+                    commits="${{ join(github.event.commits.*.message, '\n') }}"
                     echo $commits
                     npx semantic-release
                 env:
