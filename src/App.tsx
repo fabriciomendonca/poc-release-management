@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          One more commit to see the list of commits inside the workflow.
+          Skip release notes.
         </p>
         <a
           className="App-link"
