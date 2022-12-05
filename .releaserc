@@ -18,12 +18,12 @@
         "releaseRules": [
           {
             "type": "chore",
-            "release": "patch"
+            "scope": "release-skip",
+            "release": false
           },
           {
             "type": "chore",
-            "scope": "release-skip",
-            "release": false
+            "release": "patch"
           }
         ]
       }
@@ -37,6 +37,11 @@
             "type": "*!",
             "release": "major",
             "section": "Breaking Changes"
+          },
+          {
+            "type": "chore",
+            "scope": "release-skip",
+            "hidden": true
           },
           {
             "type": "feat",
@@ -75,11 +80,6 @@
             "type": "test",
             "hidden": false,
             "section": "Other updates"
-          },
-          {
-            "type": "chore",
-            "scope": "release-skip",
-            "hidden": true
           }
         ]
       }
