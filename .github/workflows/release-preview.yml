@@ -58,7 +58,8 @@ jobs:
       - name: Build Library
         run: npm run build
 
-      - name: Release
+      - name: Generate release notes preview
+        id: build-release-notes
         if: ${{ !contains(github.event.head_commit.message, format('chore(release-skip){0}', ':')) }}
         uses: guilhermetod/semantic-release-notes-preview@v1.0.0
 
@@ -68,12 +69,7 @@ jobs:
         with:
           issue-number: ${{ github.event.number }}
           body: |
-            ## 👋 Hey there!
-            Thank you for you contribution. Below is a preview of the release notes if your PR gets merged.
-            Please, make sure it includes all your significant changes with descriptive messages.
-            Keep in mind that release notes are automatically generated from the commit messages according to [conventional commits](https://www.conventionalcommits.org/).
-            If you feel like you need to change anything, please take a look into [this guide](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#addressing-review-feedback) to learn how you can fixup your commits.
-
+            ## Release notes preview
             ---
 
             ${{ steps.build-release-notes.outputs.releaseNotes }}
