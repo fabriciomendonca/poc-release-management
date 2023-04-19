@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Introducing a breaking change.</p>
+        <p>Fixing some stuff after a breaking change.</p>
       </header>
     </div>
   );
