@@ -33,5 +33,5 @@ jobs:
 
       - name: Release preview
         run: |
-          echo "Current branch: $GITHUB_HEAD_REF"
-          unset GITHUB_ACTIONS && npx semantic-release --dry-run --no-ci --branches main,{$GITHUB_HEAD_REF}
+          echo "Current branch: ${{github.ref_name}}"
+          unset GITHUB_ACTIONS && npx semantic-release --dry-run --no-ci --branches main,106/merge
