@@ -32,4 +32,4 @@ jobs:
           fetch-depth: 0
 
       - name: Release preview
-        run: unset GITHUB_ACTIONS && npx semantic-release --dry-run --no-ci --branches main,$GITHUB_HEAD_REF
+        run: unset GITHUB_ACTIONS && npx semantic-release --dry-run --no-ci --branches main,{{$GITHUB_HEAD_REF}}
