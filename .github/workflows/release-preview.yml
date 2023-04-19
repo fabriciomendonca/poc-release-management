@@ -41,10 +41,6 @@ jobs:
         with:
           ref: dry
 
-      - name: Release preview
-        run: |
-          echo "Current branch: ${{github.ref_name}}"
-          unset GITHUB_ACTIONS && npx semantic-release --dry-run --no-ci --branches main,refs/remotes/pull/106/merge --debug
       - name: Dry run
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
