@@ -27,6 +27,6 @@ jobs:
 
     steps:
       - name: Checkout branch
-        run: git checkout $GITHUB_HEAD_REF
+        run: git checkout ${{ github.ref_name }}
       - name: Release preview
-        run: unset GITHUB_ACTIONS && npx semantic-release --dry-run --no-ci --branches main,$GITHUB_HEAD_REF
+        run: unset GITHUB_ACTIONS && npx semantic-release --dry-run --no-ci --branches main,${{ github.ref_name }}
