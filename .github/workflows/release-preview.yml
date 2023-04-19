@@ -1,12 +1,14 @@
-name: Continuous Deployment
+name: Release Preview
 
 on:
-  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
     branches:
       - "main"
-  push:
-    branches:
-      - "beta"
 
 env:
   NODE_VERSION: 16
@@ -15,7 +17,7 @@ env:
   NUMBER_OF_RUNNERS: 7
 
 jobs:
-  publish:
+  preview:
     runs-on: ubuntu-latest
 
     permissions:
@@ -57,7 +59,7 @@ jobs:
       - name: Release
         if: ${{ !contains(github.event.head_commit.message, format('chore(release-skip){0}', ':')) }}
         run: |
-          npx semantic-release
+          unset GITHUB_ACTIONS && npx semantic-release --dry-run --no-ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
