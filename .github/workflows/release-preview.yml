@@ -68,7 +68,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           unset GITHUB_ACTIONS && npx semantic-release --dry-run --no-ci --branches main,dry
-          echo "The release notes $(nextRelease.notes)"
+          echo "The release notes $(${nextRelease.notes})"
 
       - name: Check release notes output
         run: echo "${{ steps.generate-release-notes.outputs.release-notes}}"
