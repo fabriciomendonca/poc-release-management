@@ -69,7 +69,7 @@ jobs:
         run: unset GITHUB_ACTIONS && npx semantic-release --dry-run --no-ci --branches main,dry && echo "release-notes=${nextRelease}"
 
       - name: Check release notes output
-        run: echo "${{ steps.generate-release-notes.outputs}}"
+        run: echo "${{ steps.generate-release-notes.outputs.release-notes}}"
 
       - name: Back to code
         uses: actions/checkout@v3
