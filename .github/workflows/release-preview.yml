@@ -29,17 +29,17 @@ jobs:
       - name: Checkout current commit
         uses: actions/checkout@v3
 
-      - name: Create dry branch
+      - name: Create release-preview branch
         uses: peterjgrainger/action-create-branch@v2.2.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          branch: "dry"
+          branch: "release-preview"
 
-      - name: Checkout dry branch
+      - name: Checkout release-preview branch
         uses: actions/checkout@v3
         with:
-          ref: dry
+          ref: release-preview
 
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
@@ -60,8 +60,7 @@ jobs:
         if: steps.npm_cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Dry run
-        id: generate-release-notes
+      - name: Save release preview to job Summary
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -69,14 +68,11 @@ jobs:
         run: |
           unset GITHUB_ACTIONS && npx -p @semantic-release/exec -p semantic-release semantic-release --dry-run --no-ci --branches main,dry @semantic-release/exec --generateNotesCmd 'echo "${nextRelease.notes}" >> $GITHUB_STEP_SUMMARY'
 
-      - name: Check release notes output
-        run: echo "${{ steps.generate-release-notes.outputs.release-notes}}"
-
-      - name: Back to code
+      - name: Checkout PR commit
         uses: actions/checkout@v3
 
-      - name: Clear dry branch
+      - name: Delete release-preview branch
         uses: dawidd6/action-delete-branch@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branches: dry
+          branches: release-preview
