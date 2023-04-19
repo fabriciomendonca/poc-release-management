@@ -2,7 +2,6 @@
   "debug": true,
   "branches": [
     "main",
-    "dry",
     {
       "name": "beta",
       "prerelease": true
