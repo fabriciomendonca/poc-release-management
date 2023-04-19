@@ -41,6 +41,25 @@ jobs:
         with:
           ref: dry
 
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Cache dependencies
+        id: npm_cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            ${{ env.CYPRESS_CACHE_FOLDER }}
+          key: node_modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: node_modules-
+
+      - name: Install dependencies
+        if: steps.npm_cache.outputs.cache-hit != 'true'
+        run: npm ci
+
       - name: Dry run
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
