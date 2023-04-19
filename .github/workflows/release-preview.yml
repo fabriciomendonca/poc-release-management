@@ -28,10 +28,34 @@ jobs:
     steps:
       - name: Checkout current commit
         uses: actions/checkout@v3
+
+      - name: Create dry branch
+        uses: peterjgrainger/action-create-branch@v2.2.0
+        env:
+          GITHUB_TOKEN: ${{ SECRET }}
         with:
-          fetch-depth: 0
+          branch: "dry"
+
+      - name: Checkout dry branch
+        uses: actions/checkout@v3
+        with:
+          ref: dry
 
       - name: Release preview
         run: |
           echo "Current branch: ${{github.ref_name}}"
           unset GITHUB_ACTIONS && npx semantic-release --dry-run --no-ci --branches main,refs/remotes/pull/106/merge --debug
+      - name: Dry run
+        env:
+          GITHUB_TOKEN: ${{ SECRET }}
+          NPM_TOKEN: ${{ SECRET }}
+        run: unset GITHUB_ACTIONS && npx semantic-release --dry-run --no-ci
+
+      - name: Back to code
+        uses: actions/checkout@v3
+
+      - name: Clear dry branch
+        uses: dawidd6/action-delete-branch@v3
+        with:
+          github_token: ${{SECRET}}
+          branches: dry
