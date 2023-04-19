@@ -28,6 +28,8 @@ jobs:
     steps:
       - name: Checkout current commit
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Release preview
-        run: unset GITHUB_ACTIONS && npx semantic-release --dry-run --no-ci --branches main,beta
+        run: unset GITHUB_ACTIONS && npx semantic-release --dry-run --no-ci --branches main,$GITHUB_HEAD_REF
