@@ -67,7 +67,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          unset GITHUB_ACTIONS && npx -p @semantic-release/exec -p semantic-release semantic-release --dry-run --no-ci --branches main,dry @semantic-release/exec --generateNotesCmd 'EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64) && echo "release-notes<<$EOF${nextRelease.notes}$EOF" >> $GITHUB_OUTPUT'
+          unset GITHUB_ACTIONS && npx -p @semantic-release/exec -p semantic-release semantic-release --dry-run --no-ci --branches main,dry @semantic-release/exec --generateNotesCmd 'EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64) && echo "release-notes<<$EOF${nextRelease.notes}" >> $GITHUB_OUTPUT && echo $EOF >> $GITHUB_OUTPUT'
 
       - name: Check release notes output
         run: echo "${{ steps.generate-release-notes.outputs.release-notes}}"
