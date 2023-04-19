@@ -26,7 +26,8 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Checkout branch
-        run: git checkout beta
+      - name: Checkout current commit
+        uses: actions/checkout@v3
+
       - name: Release preview
         run: unset GITHUB_ACTIONS && npx semantic-release --dry-run --no-ci --branches main,beta
