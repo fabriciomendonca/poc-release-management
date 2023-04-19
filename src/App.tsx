@@ -9,7 +9,7 @@ function App() {
         <p>Fixing some stuff after a breaking change.</p>
       </header>
       <main>
-        <Link />
+        <Link url="https://www.google.com" text="Google" />
       </main>
     </div>
   );

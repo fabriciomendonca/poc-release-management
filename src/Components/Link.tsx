@@ -1,5 +1,10 @@
-export const Link = () => (
+type LinkProps = {
+  url: string;
+  text: string;
+};
+
+export const Link = ({ url, text }: LinkProps) => (
   <div>
-    <a href="https://www.google.com">Google</a>
+    <a href={url}>{text}</a>
   </div>
 );
