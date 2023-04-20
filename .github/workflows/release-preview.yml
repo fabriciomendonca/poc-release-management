@@ -61,7 +61,9 @@ jobs:
           restore-keys: pnpm-with-cypress-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: |
+          ls
+          pnpm install --frozen-lockfile
 
       - name: Save release preview to job Summary
         env:
