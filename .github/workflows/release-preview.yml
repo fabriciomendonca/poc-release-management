@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: Checkout current commit
         uses: actions/checkout@v3
+          with:
+            fetch-depth: 0
 
       - name: Create release-preview branch
         uses: peterjgrainger/action-create-branch@v2.2.0
