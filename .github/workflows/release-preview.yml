@@ -20,11 +20,6 @@ jobs:
   preview:
     runs-on: ubuntu-latest
 
-    permissions:
-      packages: write
-      contents: write
-      pull-requests: write
-
     steps:
       - name: Checkout current commit
         uses: actions/checkout@v3
