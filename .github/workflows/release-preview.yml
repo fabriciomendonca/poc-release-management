@@ -24,11 +24,6 @@ jobs:
       - name: Checkout current commit
         uses: actions/checkout@v3
 
-      - name: Checkout release-preview branch
-        uses: actions/checkout@v3
-        with:
-          ref: release-preview
-
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
@@ -52,6 +47,11 @@ jobs:
             ~/.cache/Cypress
           key: pnpm-with-cypress-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: pnpm-with-cypress-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+
+      - name: Checkout release-preview branch
+        uses: actions/checkout@v3
+        with:
+          ref: release-preview
 
       - name: Install dependencies
         run: |
