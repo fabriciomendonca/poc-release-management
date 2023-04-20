@@ -24,7 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "release": "npx semantic-release --no-ci"
+    "release": "pnpx semantic-release --no-ci"
   },
   "eslintConfig": {
     "extends": [
