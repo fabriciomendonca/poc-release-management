@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>Fixing some stuff after a breaking change.</p>
+        <p>Testing release notes preview.</p>
       </header>
       <main>
         <Link url="https://www.google.com" text="Google" />
