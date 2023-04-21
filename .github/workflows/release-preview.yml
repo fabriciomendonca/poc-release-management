@@ -1,29 +1,44 @@
-name: Continuous Deployment
+name: Release Notes Preview
 
 on:
-  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
     branches:
       - "main"
-  push:
-    branches:
-      - "beta"
 
 env:
   NODE_VERSION: 18
   CI: true
-  CYPRESS_CACHE_FOLDER: cypress_cache
-  NUMBER_OF_RUNNERS: 7
+  NUMBER_OF_RUNNERS: 8
 
 jobs:
-  publish:
+  notes-preview:
+    name: Notes Preview
     runs-on: ubuntu-latest
 
-    permissions:
-      packages: write
-      contents: write
-      pull-requests: write
-
     steps:
+      - name: Checkout current commit
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Create release-preview branch
+        uses: peterjgrainger/action-create-branch@v2.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branch: "release-preview"
+
+      - name: Checkout release-preview branch
+        uses: actions/checkout@v3
+        with:
+          ref: release-preview
+          fetch-depth: 0
+
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
@@ -50,21 +65,22 @@ jobs:
 
       - name: Install dependencies
         run: |
+          ls
           pnpm install --frozen-lockfile
 
-      - name: Component Tests
-        run: pnpm run test
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build Library
-        run: pnpm run build
-
-      - name: Release
-        if: ${{ !contains(github.event.head_commit.message, format('chore(release-skip){0}', ':')) }}
-        run: |
-          npx -p @semantic-release/exec -p semantic-release semantic-release
+      - name: Print release notes preview
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          unset GITHUB_ACTIONS && pnpm exec semantic-release --dry-run --no-ci --branches main,release-preview
+
+      - name: Checkout PR commit
+        uses: actions/checkout@v3
+
+      - name: Delete release-preview branch
+        uses: dawidd6/action-delete-branch@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branches: release-preview

@@ -24,7 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "release": "npx semantic-release --no-ci"
+    "release": "pnpx semantic-release --no-ci"
   },
   "eslintConfig": {
     "extends": [
@@ -45,9 +45,10 @@
     ]
   },
   "devDependencies": {
+    "@semantic-release/exec": "6.0.3",
     "conventional-changelog-conventionalcommits": "^5.0.0",
     "cypress": "^10.10.0",
     "cypress-real-events": "^1.7.2",
-    "semantic-release": "^19.0.5"
+    "semantic-release": "21.0.1"
   }
 }
